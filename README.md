@@ -5,7 +5,7 @@
 ### Constará de:
 | Arquivos | Definición |
 -----------|-------------
-cronómetro | clase JS coas funcións de xestión do cronómetro
+cronometro | clase JS coas funcións de xestión do cronómetro
 buscaminas | clase JS coas funcións de xestión do buscaminas
 createDB | arquivo SQL cos comandos necesarios para a creación da BD
 datosDB | arquivo SQL cos comandos necesarios para insertar datos de proba na BD

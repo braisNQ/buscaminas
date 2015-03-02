@@ -1,0 +1,20 @@
+.fila
+{
+	display: table;
+	width: 100%;
+}
+
+.celda
+{
+	display: table-cell;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.minitext
+{
+	font-size: 5pt;
+}
