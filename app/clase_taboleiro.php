@@ -2,8 +2,7 @@
 
 class taboleiro
 {
-	private $filas;
-	private $columnas;
+	private $dimension;
 	private $minas;
 
 	/*
@@ -12,8 +11,7 @@ class taboleiro
      */
     function __construct($d)
     {
-    	$this->filas = $d;
-    	$this->columnas = $d;
+    	$this->dimension = $d;
     	$this->minas = ($d * $d) /4;
     }
     
@@ -29,14 +27,28 @@ class taboleiro
      */
     function configurador()
     {
-    	echo '
-    		<div align="center">
-				<div class="btn-group" role="group">
-	  				<a class="btn btn-primary" href="configurar.php?d=6">6x6</a>
-	  				<a class="btn btn-default" href="configurar.php?d=10">10x10</a>
+        if($this->dimension == 6)
+        {
+	    	echo '
+	    		<div align="center">
+					<div class="btn-group" role="group">
+		  				<a class="btn btn-primary" href="configurar.php?d=6">6x6</a>
+		  				<a class="btn btn-default" href="configurar.php?d=10">10x10</a>
+					</div>
 				</div>
-			</div>
-			';
+				';
+		}
+		if($this->dimension == 10)
+		{
+	    	echo '
+	    		<div align="center">
+					<div class="btn-group" role="group">
+		  				<a class="btn btn-default" href="configurar.php?d=6">6x6</a>
+		  				<a class="btn btn-primary" href="configurar.php?d=10">10x10</a>
+					</div>
+				</div>
+				';
+		}
     }
 
 	/*
@@ -46,7 +58,9 @@ class taboleiro
 	function formulario()
 	{
 		echo '		
-	      	<form class="form-horizontal" role="form" id="formPartida" action="score.php" method="post">                        
+	      	<form class="form-horizontal" role="form" id="formPartida" action="score.php" method="post">
+	      		<iput type="hidden" name="minas" id="minas" value="'.$this->minas.'" />
+	      		<iput type="hidden" name="dimension" id="dimension" value="'.$this->dimension.'" />                          
 	        	<div class="form-group">
 	          		<div class="col-sm-6">
 	            		<div class="input-group">
@@ -86,11 +100,11 @@ class taboleiro
 	 */
 	function debuxa()
 	{
-		for($i=0;$i<$this->filas;$i++)
+		for($i=0;$i<$this->dimension;$i++)
 		{
 			echo "<div class='fila'>";
 
-			for($j=0;$j<$this->columnas;$j++)
+			for($j=0;$j<$this->dimension;$j++)
 			{
 
 				$nome= "celda-".$i."-".$j;

@@ -33,17 +33,26 @@
 
 <?php
 
-$taboleiro = new taboleiro(6);
-echo "<br />";
-$taboleiro->configurador();
-echo "<br /><br />";
-$taboleiro->formulario();
+    //valor de dimensión por defecto
+    $dimension = 6;
 
-$taboleiro->progreso();
+    //se existe a cookie de dimensión cambia o valor
+    if(isset($_COOKIE['dimension']))
+    {
+        $dimension= $_COOKIE['dimension'];
+    }
 
-$taboleiro->debuxa();
-echo "<br />";
-$taboleiro->reiniciar();
+    $taboleiro = new taboleiro($dimension);
+    echo "<br />";
+    $taboleiro->configurador();
+    echo "<br /><br />";
+    $taboleiro->formulario();
+
+    $taboleiro->progreso();
+
+    $taboleiro->debuxa();
+    echo "<br />";
+    $taboleiro->reiniciar();
 
 ?>
 

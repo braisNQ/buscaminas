@@ -1,19 +1,23 @@
 <?php
-/*
- * Activar debug de php
- */
+    /*
+     * iniciar sesion
+     */
+    session_start();
+?>
+
+<?php
+    /*
+     * Activar debug de php
+     */
     ini_set('display_errors',1);
     ini_set('display_startup_errors',1);
     error_reporting(-1);
 ?>
 
 <?php
-    /*
-     * iniciando sesión 
-     */ 
-    session_start();
      
     //incluindo todas as clases da aplicación
+    include_once("funcions.php");
     include_once("clase_BD.php");
     include_once("clase_usuario.php");
     include_once("clase_taboleiro.php");
@@ -34,6 +38,9 @@
         <meta name="author" content="Brais Carrion Ansias">
 
         <title>Buscaminas</title>
+        
+        <!-- favicon -->
+        <link href="img/favicon.png" rel="shortcut icon" />
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +48,10 @@
         <!-- Custom styles for this template -->
         <link href="css/navbar-fixed-top.css" rel="stylesheet">
 
-        <!-- Brais CSS -->        
+        <!--font awesome -->        
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Brais CSS -->   
         <link href="css/buscaminas.css" rel="stylesheet">
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

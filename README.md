@@ -1,6 +1,6 @@
 # Buscaminas
 
-### Aplicación creada para a entrega final do módulo IAWEB do curso14/15
+### Aplicación creada para a entrega final do módulo IAWEB do curso 14/15
 
 ### Constará de:
 | Arquivos | Definición |
@@ -18,6 +18,7 @@ clasificación | listado de partidas ordeadas por puntuación
 
 ### Para o desenvolvemento deste proxecto foron utilizados os seguintes recursos:
 http://getbootstrap.com/
+http://fortawesome.github.io/Font-Awesome/
 
 ### Licenza
 Esta aplicación está publicada baixo licenza GPLv3 ( http://www.gnu.org/licenses/gpl-3.0.html)
