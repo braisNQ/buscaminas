@@ -17,8 +17,8 @@ xestión de usuarios | alta, baixa, modificación e consulta de usuarios
 clasificación | listado de partidas ordeadas por puntuación
 
 ### Para o desenvolvemento deste proxecto foron utilizados os seguintes recursos:
-http://getbootstrap.com/
-http://fortawesome.github.io/Font-Awesome/
+* [Bootstrap] (http://getbootstrap.com/)
+* [Font Awesome] (http://fortawesome.github.io/Font-Awesome/)
 
 ### Licenza
 Esta aplicación está publicada baixo licenza GPLv3 ( http://www.gnu.org/licenses/gpl-3.0.html)
