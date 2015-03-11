@@ -7,15 +7,15 @@ class usuario
     
     private $id;
     
-    private $login;
-    private $contrasinal;
+    private $mail;
+    private $pass;
     private $nome;
-    private $tipo;    
+    private $nivel;    
     
     private $existe;
     
     /*
-     * tipo
+     * nivel
      * 1- admin
      * 2- usuaria/o
      */
@@ -31,17 +31,17 @@ class usuario
         $this->id = $i;    
         
         $mi = mysqli_real_escape_string($this->bd->conexion, $i);
-        $sql = "select * from Usuario where ID = '".$mi."'";
+        $sql = "select * from usuario where ID = '".$mi."'";
         $u = mysqli_query($this->bd->conexion, $sql);    
         
         if($u->num_rows > 0)
         {
             while($row = $u->fetch_assoc())
             {
-                $this->login = $row['login'];
-                $this->contrasinal = $row['contrasinal'];
+                $this->mail = $row['mail'];
+                $this->pass = $row['pass'];
                 $this->nome = $row['nome'];
-                $this->tipo = $row['tipo'];
+                $this->nivel = $row['nivel'];
                 $this->existe = true;
             }
         }
@@ -69,20 +69,20 @@ class usuario
     
     /*
      * función admin()
-     * devolve true se o usuario é administrador (tipo 1) do sistema
+     * devolve true se o usuario é administrador (nivel 1) do sistema
      */
      function admin()
      {
-        return ($this->tipo == 1);
+        return ($this->nivel == 1);
      } 
      
      /*
-      * función getLogin()
-      * devolve o Login do usuario
+      * función getmail()
+      * devolve o mail do usuario
       */
-      function getLogin()
+      function getMail()
       {
-          return $this->login;          
+          return $this->mail;          
       }
       
      /*
@@ -95,22 +95,22 @@ class usuario
       }
             
      /*
-      * función getTipo()
-      * devolve o tipo do usuario
+      * función getNivel()
+      * devolve o nivel do usuario
       */
-      function getTipo()
+      function getNivel()
       {
-          return $this->tipo;          
+          return $this->nivel;          
       }
      
      /*
-      * funcion editar($nome, $contrasinal)
-      * edita os datos de nome e contrasinal do usuario
+      * funcion editar($nome, $pass)
+      * edita os datos de nome e pass do usuario
       */
-     function editar($nome, $contrasinal)
+     function editar($nome, $pass)
      {
         $n = mysqli_real_escape_string($this->bd->conexion, $nome);
-        $sql = "update Usuario set nome = '".$n."', contrasinal = '".$contrasinal."' where ID = '".$this->id."'";
+        $sql = "update usuario set nome = '".$n."', pass = '".$pass."' where ID = '".$this->id."'";
         return mysqli_query($this->bd->conexion, $sql);
      }
     
@@ -120,8 +120,8 @@ class usuario
      */
     function darAdmin()
     {
-        $sql = "update Usuario set tipo = 1 where ID = '".$this->id."'";
-        $this->tipo = 1;
+        $sql = "update usuario set nivel = 1 where ID = '".$this->id."'";
+        $this->nivel = 1;
         return mysqli_query($this->bd->conexion, $sql);
     }
     
@@ -131,17 +131,9 @@ class usuario
      */
     function quitarAdmin()
     {
-        $nivel = 3;
-        
-        $sql = "select * from TorneoModerador where ID_moderador = '".$this->id."'";
-        $u = mysqli_query($this->bd->conexion, $sql);    
-            
-        if($u->num_rows > 0)
-            $nivel = 2;
-        
-        $sql = "update Usuario set tipo = '".$nivel."' where ID = '".$this->id."'";
-        
-        $this->tipo = $nivel;
+        $nivel = 2;        
+        $sql = "update usuario set nivel = '".$nivel."' where ID = '".$this->id."'";        
+        $this->nivel = $nivel;
         return mysqli_query($this->bd->conexion, $sql);
     }
     
@@ -151,13 +143,13 @@ class usuario
      */
     function eliminar()
     {
-        $sql = "update Usuario set ID_equipo = NULL where ID_equipo ='".$this->ID_equipo."'";
+        $sql = "update usuario set ID_equipo = NULL where ID_equipo ='".$this->ID_equipo."'";
         $toret = mysqli_query($this->bd->conexion, $sql);
         
         $sql = "delete from Equipo where ID='".$this->ID_equipo."'";        
         $toret = ($toret && mysqli_query($this->bd->conexion, $sql));
 
-        $sql = "delete from Usuario where ID='".$this->id."'";        
+        $sql = "delete from usuario where ID='".$this->id."'";        
         return ($toret && mysqli_query($this->bd->conexion, $sql));
     }
     

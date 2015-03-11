@@ -4,7 +4,7 @@
       echo "Ola ". $usuarioActual->getNome()."!";
       echo "<br />";
       echo "<a href='usuario.php?id=".$_SESSION['ID']."'>O meu perfil</a>";
-      echo "<br /";
+      echo "<br />";
       echo "<a href='logout.php'><span class='glyphicon glyphicon-off btn-xs'></span> Pechar sesi&oacute;n</a>";
     }
     else
@@ -32,11 +32,11 @@
               <br />
               <form class="form-horizontal" role="form" id="formLogin" action="accesosistema.php" method="post">                        
                 <div class="form-group">
-                  <label for="inputLogin" class="col-sm-2 control-label">Login</label>
+                  <label for="inputLogin" class="col-sm-2 control-label">Correo</label>
                   <div class="col-sm-10">
                     <div class="input-group">
-                      <span class="input-group-addon glyphicon glyphicon-user"></span>
-                      <input type="text" class="form-control" id="inputLogin" name="inputLogin" maxlength="50" placeholder="Login" required>
+                      <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                      <input type="text" class="form-control" id="inputLogin" name="inputLogin" maxlength="50" placeholder="correo@correo.es" required>
                     </div>
                   </div>
                 </div>
@@ -60,11 +60,11 @@
               <br />                    
               <form class="form-horizontal" role="form" id="formRexistro" action="accesosistema.php" method="post">
                 <div class="form-group">
-                  <label for="inputLoginRexistro" class="col-sm-2 control-label">Login</label>
+                  <label for="inputLoginRexistro" class="col-sm-2 control-label">Correo</label>
                   <div class="col-sm-10">
                     <div class="input-group">
-                      <span class="input-group-addon glyphicon glyphicon-user"></span>
-                      <input type="text" class="form-control" id="inputLoginRexistro" name="inputLoginRexistro" maxlength="50" placeholder="Login" required>
+                      <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                      <input type="text" class="form-control" id="inputLoginRexistro" name="inputLoginRexistro" maxlength="50" placeholder="correo@correo.es" required>
                     </div>
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                   <label for="inputNomeRexistro" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">
                     <div class="input-group">
-                      <span class="input-group-addon glyphicon glyphicon-comment"></span>
+                      <span class="input-group-addon glyphicon glyphicon-user"></span>
                       <input type="text" class="form-control" id="inputNomeRexistro" name="inputNomeRexistro" maxlength="50" placeholder="Nome a amosar" required>
                     </div>
                   </div>

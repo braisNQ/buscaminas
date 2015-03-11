@@ -39,10 +39,11 @@
    $p = 1; //páxina listada
    
    $items = 10; //items listados por páxina
-   $orderby = "login";
+   $orderby = "mail";
    $order = "asc"; //orden de listado
-   $login='';
+   $mail='';
    $nome='';
+   $nivel=0;
 
   /*
    * recoller variables
@@ -55,10 +56,12 @@
     $orderby = $_POST['orderby'];     
   if (isset($_POST['order']))
     $order = $_POST['order']; 
-  if (isset($_POST['login']))
-    $login = $_POST['login'];
+  if (isset($_POST['mail']))
+    $mail = $_POST['mail'];
   if (isset($_POST['nome']))
     $nome = $_POST['nome'];
+  if (isset($_POST['nivel']))
+    $nivel = $_POST['nivel'];
 
     
 ?>    
@@ -73,9 +76,9 @@
                 <form class="form-horizontal" role="form" id="formFiltro" action="lista_usuarios.php" method="post">
                     <input type="hidden" id="p" name="p" value="1">
                     <div class="form-group">
-                        <label for="login" class="col-sm-1 control-label input-sm">Login</label>
+                        <label for="mail" class="col-sm-1 control-label input-sm">Correo</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control input-sm" id="login" name="login" maxlength="50" value="<?php echo $login;?>">
+                            <input type="text" class="form-control input-sm" id="mail" name="mail" maxlength="50" value="<?php echo $mail;?>">
                         </div>
                         <label for="nome" class="col-sm-1 control-label input-sm">Nome</label>
                         <div class="col-sm-3">
@@ -85,7 +88,7 @@
                         <div class="col-sm-2">
                             <div class="input-group">
                                 <select class="form-control input-sm" name="orderby" id="orderby">
-                                  <option value="login" <?php if($orderby == "login") echo "selected";?>>Login</option>
+                                  <option value="mail" <?php if($orderby == "mail") echo "selected";?>>Correo</option>
                                   <option value="nome" <?php if($orderby == "nome") echo "selected";?>>Nome</option>
                                 </select>
                                 &nbsp;&nbsp;
@@ -119,7 +122,7 @@
     $bd = new bd();
     
     $nt = $bd->numeroUsuarios();
-    $nf = $bd->listarUsuariosCont($login, $nome, $enequipo, $tipo);
+    $nf = $bd->listarUsuariosCont($mail, $nome, $nivel);
 
     //calculos para paxinación
     $inicio = ($p - 1) * $items;
@@ -134,7 +137,7 @@
     if($mostrando_inicio > $mostrando_fin)
         $mostrando_inicio = $mostrando_fin;
     
-    $lista = $bd->listarUsuarios($login, $nome, $orderby, $order, $inicio, $items);
+    $lista = $bd->listarUsuarios($mail, $nome, $orderby, $order, $inicio, $items);
         
     echo "<span>Listando ".$mostrando_inicio." - ".$mostrando_fin." de ".intval($nf)." usuarios filtrados.</span>";
     echo "<br />";
@@ -143,9 +146,9 @@
     echo "
         <table class='table table-striped table-hover'>
             <tr>
-                <th>Login</th>
+                <th>Correo</th>
                 <th>Nome</th>
-                <th>Tipo</th>
+                <th>Nivel</th>
                 <th>&nbsp;</th>
             </tr>
     ";
@@ -155,11 +158,11 @@
         while($row = $lista->fetch_assoc())
         {
             echo "<tr>";
-                echo "<td>".$row['login']."</td>";
+                echo "<td>".$row['mail']."</td>";
                 echo "<td>".$row['nome']."</td>";
                 echo "<td>";
-                    if ($row['tipo'] == 1) echo "Admin";
-                    if ($row['tipo'] == 2) echo "Usuaria/o";
+                    if ($row['nivel'] == 1) echo "Admin";
+                    if ($row['nivel'] == 2) echo "Usuaria/o";
                 echo "</td>";
                 echo "<td>";
                     if(isset($_SESSION['ID']))

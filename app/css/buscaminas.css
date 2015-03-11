@@ -14,11 +14,19 @@
     vertical-align: center;
 }
 
-.minitext
+.mostrar
 {
-	font-size: 5pt;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25px;
+    text-align: center;
+    vertical-align: center;
 }
 
+.error {
+    border: 1px solid red;
+    background: rgb(255,150,150);
+}
 
 .footer h3
 {

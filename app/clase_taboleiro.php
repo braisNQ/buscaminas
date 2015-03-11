@@ -59,19 +59,19 @@ class taboleiro
 	{
 		echo '		
 	      	<form class="form-horizontal" role="form" id="formPartida" action="score.php" method="post">
-	      		<iput type="hidden" name="minas" id="minas" value="'.$this->minas.'" />
-	      		<iput type="hidden" name="dimension" id="dimension" value="'.$this->dimension.'" />                          
+	      		<input type="hidden" name="minas" id="minas" value="'.$this->minas.'">
+	      		<input type="hidden" name="dimension" id="dimension" value="'.$this->dimension.'">                          
 	        	<div class="form-group">
 	          		<div class="col-sm-6">
 	            		<div class="input-group">
 	              			<span class="input-group-addon glyphicon glyphicon-time"></span>
-	              			<input type="text" class="form-control" id="inputTempo" name="inputTempo" value=0>
+	              			<input type="text" class="form-control" id="inputTempo" name="inputTempo" value=0 disabled>
 	            		</div>
 	          		</div>
 	          		<div class="col-sm-6">
 	            		<div class="input-group">
 	              			<span class="input-group-addon glyphicon glyphicon-asterisk"></span>
-	              			<input type="text" class="form-control" id="inputMinas" name="inputMinas" value="'.$this->minas.'">
+	              			<input type="text" class="form-control" id="inputMinas" name="inputMinas" value="'.$this->minas.'" disabled>
 	          	 	 	</div>
 	          		</div>
 	        	</div>
@@ -87,7 +87,7 @@ class taboleiro
     {
     	echo '
        		<div class="progress">
-  				<div class="progress-bar" role="progressbar" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:0%">
+  				<div class="progress-bar" name="progreso" id="progreso" role="progressbar" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:0%">
     				0%
   				</div>
 			</div>
@@ -113,7 +113,7 @@ class taboleiro
 				echo " oncontextmenu=".$oncontext;
 				$onclick="\"seleccionaCelda('".$nome."');"."return false;\"";
 				echo " onclick=".$onclick;
-				echo ">&nbsp;&nbsp;&nbsp;&nbsp;</div>";
+				echo "><div class='mostrar'>&nbsp</div></div>";
 			}
 
 			echo "</div>";
