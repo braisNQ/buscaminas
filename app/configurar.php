@@ -9,7 +9,7 @@
 	{
 		$dimension=$_GET['d'];
 		setcookie("dimension",$dimension,time()+3600);
-	    header("location:index.php");
+	    header("location:xogar.php");
 	}
 	else
 	{

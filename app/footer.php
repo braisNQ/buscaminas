@@ -5,16 +5,19 @@
                         <div class="footer-col col-md-4">
                             <h3>Sobre Buscaminas</h3>
                             <p>
-                                Aplicaci&oacute;n creada para a entrega final do m&oacute;dulo IAWEB do curso 14/15 de ASIR.
+                                Aplicaci&oacute;n creada para a entrega final do m&oacute;dulo IAWEB do curso 14/15 de ASIR
                                 <br />
-                                Publicada baixo licenza GPLv3.
+                                Publicada baixo licenza GPLv3
                             </p>
                             <p>
                                 Código dispo&ntilde;ible en:
-                                <br />
-                                <a href="https://github.com/braisNQ/buscaminas" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                <br />                                
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="https://github.com/braisNQ/buscaminas" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                    </li>
+                                </ul>
                             </p>
-
                         </div>
                         <div class="footer-col col-md-4">
                             <h3>Sobre o autor</h3>
@@ -22,8 +25,6 @@
                                 Brais Carri&oacute;n
                             </p>
                             <p>
-                                Membro de:
-                                <br />
                                 <img src="img/nqysit.png" />
                                 <br />
                                 <a href="http://www.nqysit.com" target="_blank">www.nqysit.com</a>
@@ -59,7 +60,6 @@
         <!-- Buscaminas -->
         <script src="md5.js"></script>
         <script src="funcions.js"></script>
-        <script src="cronometro.js"></script>
         <script src="buscaminas.js"></script>
         
         <!-- Bootstrap core JavaScript

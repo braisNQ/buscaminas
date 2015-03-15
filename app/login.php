@@ -2,15 +2,14 @@
     if (isset($_SESSION['ID']))
     {
       echo "Ola ". $usuarioActual->getNome()."!";
-      echo "<br />";
-      echo "<a href='usuario.php?id=".$_SESSION['ID']."'>O meu perfil</a>";
+      echo " - ";
+      echo "<a href='usuario.php?id=".$_SESSION['ID']."'>perfil</a>";
       echo "<br />";
       echo "<a href='logout.php'><span class='glyphicon glyphicon-off btn-xs'></span> Pechar sesi&oacute;n</a>";
     }
     else
     {
-      echo "<a href='#'' data-toggle='modal' data-target='#loginModal'>Login / Rexistro</a>";
-    }
+      echo "<a href='#' data-toggle='modal' data-target='#loginModal'>Login / Rexistro</a>";
 ?>
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -100,3 +99,7 @@
     </div>
   </div>
 </div>
+
+<?php
+    }
+?>

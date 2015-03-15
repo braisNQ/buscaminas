@@ -58,7 +58,7 @@ class taboleiro
 	function formulario()
 	{
 		echo '		
-	      	<form class="form-horizontal" role="form" id="formPartida" action="score.php" method="post">
+	      	<form class="form-horizontal" role="form" id="formPartida" action="score_submit.php" method="post">
 	      		<input type="hidden" name="minas" id="minas" value="'.$this->minas.'">
 	      		<input type="hidden" name="dimension" id="dimension" value="'.$this->dimension.'">                          
 	        	<div class="form-group">
@@ -75,6 +75,7 @@ class taboleiro
 	          	 	 	</div>
 	          		</div>
 	        	</div>
+	        	<div align="center" name="divaviso" id="divaviso"></div>
 	       </form>
 		';
 	}
@@ -128,7 +129,7 @@ class taboleiro
 	{
 		echo '
 			<div align="center">
-	  			<a class="btn btn-default" href="index.php"><span class="glyphicon glyphicon-repeat"></span> Reiniciar</a>
+	  			<a class="btn btn-default" href="xogar.php"><span class="glyphicon glyphicon-repeat"></span> Reiniciar</a>
 	  		</div>
 		';
 	}

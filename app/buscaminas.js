@@ -9,6 +9,7 @@ var restantes=0;
 var iniciais = 0;
 var tablaMinas;
 var tablaSeleccion;
+var tempinicio;
 
 
 function seleccionaCelda(c)
@@ -28,7 +29,6 @@ function seleccionaCelda(c)
 			}
 			else
 			{
-
 				var proximas = getProximas(getX(c),getY(c));
 				document.getElementById(c).className = "celda alert-info";
 				if(proximas > 0)
@@ -43,6 +43,11 @@ function seleccionaCelda(c)
 				p = p +"%";
 				document.getElementById('progreso').style.width= p;
 				document.getElementById('progreso').innerHTML= p;
+
+				if(p == "100%")
+				{
+					finaliza();
+				}
 			}
 
 			tablaSeleccion[getX(c)][getY(c)] = true;
@@ -127,6 +132,9 @@ function inicia()
 	}
 
 	generaMinas();
+
+	tempinicio = new Date();	
+    setInterval(sumaTempo, 1000);
 }
 
 function generaMinas()
@@ -146,16 +154,50 @@ function generaMinas()
 	}
 }
 
+function sumaTempo()
+{
+	if(!finalizado)
+	{
+		var t = new Date();
+		var dif = (t.getTime() - tempinicio.getTime()) / 1000;
+		document.getElementById("inputTempo").value = parseInt(dif);
+	}
+}
+
 function gameover(c)
-{	
+{
+	finalizado = true;
+
 	//desvela minas
 	desvelaMinas();
 
 	//marca a culpable
 	document.getElementById(c).className = "celda alert-danger error";
 
+
+	var div ='';
+	div += '<div class="container">';
+	div += '<div class="alert alert-danger" role="alert">';
+	div += '<label class="control-label">Game Over!</label>';
+	div += '</div>';
+	div += '</div>';
+	document.getElementById("divaviso").innerHTML = div;
+
+}
+
+function finaliza()
+{	
 	finalizado = true;
-	alert ("Game Over");
+
+	var div ='';
+	div += '<div class="container">';
+	div += '<div class="alert alert-success" role="alert">';
+	div += '<label class="control-label">Noraboa!</label>';
+	div += '<br /><br />';
+	div += '<button type="submit" class="btn btn-primary btn-sm">Enviar Puntuaci&oacute;n</button>';
+	div += '</div>';
+	div += '</div>';
+	document.getElementById("divaviso").innerHTML = div;
 }
 
 function desvelaMinas()
@@ -176,8 +218,6 @@ function desvelaMinas()
 				document.getElementById("celda-"+i+"-"+j).className = "celda alert-danger";
 			}
 		}
-
-
 }
 
 function getX(c)
