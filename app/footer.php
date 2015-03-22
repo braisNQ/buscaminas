@@ -1,3 +1,10 @@
+<?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
         <div class="footer text-center">
             <div class="footer-above">
                 <div class="container">
@@ -10,7 +17,7 @@
                                 Publicada baixo licenza GPLv3
                             </p>
                             <p>
-                                Código dispo&ntilde;ible en:
+                                C&oacute;digo dispo&ntilde;ible en:
                                 <br />                                
                                 <ul class="list-inline">
                                     <li>
@@ -25,7 +32,7 @@
                                 Brais Carri&oacute;n
                             </p>
                             <p>
-                                <img src="img/nqysit.png" />
+                                <img src="img/nqysit.png"  />
                                 <br />
                                 <a href="http://www.nqysit.com" target="_blank">www.nqysit.com</a>
                             </p>
@@ -58,9 +65,9 @@
         </div>
         
         <!-- Buscaminas -->
-        <script src="md5.js"></script>
-        <script src="funcions.js"></script>
-        <script src="buscaminas.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/funcions.js"></script>
+        <script src="js/buscaminas.js"></script>
         
         <!-- Bootstrap core JavaScript
         ================================================== -->

@@ -1,3 +1,8 @@
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+
 //función md5login
 //encripta o contrasinal do login antes de envialo
 function md5login()

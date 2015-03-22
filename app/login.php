@@ -1,4 +1,11 @@
 <?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
+<?php
     if (isset($_SESSION['ID']))
     {
       echo "Ola ". $usuarioActual->getNome()."!";
@@ -35,7 +42,7 @@
                   <div class="col-sm-10">
                     <div class="input-group">
                       <span class="input-group-addon glyphicon glyphicon-envelope"></span>
-                      <input type="text" class="form-control" id="inputLogin" name="inputLogin" maxlength="50" placeholder="correo@correo.es" required>
+                      <input type="text" class="form-control" id="inputLogin" name="inputLogin" maxlength="50" placeholder="correo@correo.es" pattern="(([a-z0-9\_\.\-]){2,30}\@([a-z]{3,15})\.([a-z]{2,3}))" required>
                     </div>
                   </div>
                 </div>
@@ -63,7 +70,7 @@
                   <div class="col-sm-10">
                     <div class="input-group">
                       <span class="input-group-addon glyphicon glyphicon-envelope"></span>
-                      <input type="text" class="form-control" id="inputLoginRexistro" name="inputLoginRexistro" maxlength="50" placeholder="correo@correo.es" required>
+                      <input type="text" class="form-control" id="inputLoginRexistro" name="inputLoginRexistro" maxlength="50" placeholder="correo@correo.es" pattern="(([a-z0-9\_\.\-]){2,30}\@([a-z]{3,15})\.([a-z]{2,3}))" required>
                     </div>
                   </div>
                 </div>

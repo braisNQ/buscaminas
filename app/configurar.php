@@ -1,4 +1,11 @@
 <?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
+<?php
 	//iniciar
 	ob_start();
 

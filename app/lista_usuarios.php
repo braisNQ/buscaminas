@@ -1,3 +1,10 @@
+<?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
 <?php include("header.php"); ?>
 
 
@@ -82,11 +89,19 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="nivel" class="col-sm-1 control-label input-sm">Nivel</label>
+                        <div class="col-sm-2">
+                            <select class="form-control input-sm" name="nivel" id="nivel">
+                              <option value="0" <?php if($nivel == 0) echo "selected";?>>Tod@s</option>
+                              <option value="1" <?php if($nivel == 1) echo "selected";?>>Administrador/a</option>
+                              <option value="2" <?php if($nivel == 2) echo "selected";?>>Usuaria/o</option>
+                            </select>
+                        </div>
                         <label for="items" class="col-sm-2 control-label input-sm">Resultados por p&aacute;xina</label>
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                             <input type="number" class="form-control input-sm" id="items" name="items" min="1" max="20" step="1" value="<?php echo $items;?>" required>
                         </div>                                      
-                        <div class="col-sm-6"></div>
+                        <div class="col-sm-2"></div>
                         <div class="col-sm-2">
                              <button type="submit" class="btn btn-info btn-xs" name="accion" value="filtrar"><span class='glyphicon glyphicon-search'></span> Filtrar</button> 
                              <a href="lista_usuarios.php" class="btn btn-default btn-xs"><span class='glyphicon glyphicon-trash'></span> Limpar</a>
@@ -117,7 +132,7 @@
     if($mostrando_inicio > $mostrando_fin)
         $mostrando_inicio = $mostrando_fin;
     
-    $lista = $bd->listarUsuarios($mail, $nome, $orderby, $order, $inicio, $items);
+    $lista = $bd->listarUsuarios($mail, $nome, $nivel, $orderby, $order, $inicio, $items);
         
     echo "<span>Listando ".$mostrando_inicio." - ".$mostrando_fin." de ".intval($nf)." usuarios filtrados.</span>";
     echo "<br />";
@@ -147,8 +162,6 @@
                 echo "<td>";
                     if(isset($_SESSION['ID']))
                     {
-                        if($row['ID'] != $_SESSION['ID'])
-                            echo "<a class='btn btn-default btn-xs' href='mensaxe_send.php?id=".$row['ID']."'><span class='glyphicon glyphicon-envelope' data-toggle='tooltip' data-placement='top' title='Enviar mensaxe'></span></a> ";
                         if(($row['ID'] == $_SESSION['ID']) || $usuarioActual->admin())
                             echo "<a class='btn btn-info btn-xs' href='usuario.php?id=".$row['ID']."'><span class='glyphicon glyphicon-edit' data-toggle='tooltip' data-placement='top' title='Editar perfil'></span></a> ";
                         if($usuarioActual->admin())
@@ -194,9 +207,6 @@
     }
     echo "        </ul>";
 ?>
-        
-      
-
 
 
     </div> <!--jumbotron -->

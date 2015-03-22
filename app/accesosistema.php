@@ -1,11 +1,18 @@
+<?php
+/*
+ * Autor: Brais Carri髇 Ansias
+ * IAWEB 14/15
+ */
+?>
+
 <?php include("header.php"); ?>
 
 <?php
     
-    //se non existe unha variable de sesi贸n
-        //realiza as acci贸ns de rexistro e login
+    //se non existe unha variable de sesi髇
+        //realiza as acci髇s de rexistro e login
     //else
-        //aviso de xa ter unha sesi贸n iniciada
+        //aviso de xa ter unha sesi髇 iniciada
 
     if (!isset($_SESSION['ID']))
     {
@@ -13,60 +20,70 @@
         
         if ($accion=="rexistro")
         {
-            $bd = new BD();
-            
-            //busca o login introducido na BD
-            //se non existe
-                //inserta o usuario
-                //se non hai fallos
-                    //crea sesi贸n para o usuario
-                    //aviso de rexistro correcto
-                //else
-                    //aviso erro no rexistro
-            //else
-                //aviso de login xa existente
-            
-            if($bd->buscaLogin($_POST['inputLoginRexistro'])->num_rows == 0)
+            if(validamail($_POST['inputLoginRexistro']))
             {
-                if($resultado = $bd->rexistro($_POST['inputLoginRexistro'], $_POST['inputContrasinalRexistro'], $_POST['inputNomeRexistro']))
+                $bd = new BD();
+                
+                //busca o login introducido na BD
+                //se non existe
+                    //inserta o usuario
+                    //se non hai fallos
+                        //crea sesi髇 para o usuario
+                        //aviso de rexistro correcto
+                    //else
+                        //aviso erro no rexistro
+                //else
+                    //aviso de login xa existente
+                
+                if($bd->buscaLogin($_POST['inputLoginRexistro'])->num_rows == 0)
                 {
-                    $resultado = $bd->login($_POST['inputLoginRexistro'], $_POST['inputContrasinalRexistro']);        
-                    if($resultado->num_rows > 0)
+                    if($resultado = $bd->rexistro($_POST['inputLoginRexistro'], $_POST['inputContrasinalRexistro'], $_POST['inputNomeRexistro']))
                     {
-                        while($row = $resultado->fetch_assoc())
+                        $resultado = $bd->login($_POST['inputLoginRexistro'], $_POST['inputContrasinalRexistro']);        
+                        if($resultado->num_rows > 0)
                         {
-                            $_SESSION['ID'] = $row['ID'];
+                            while($row = $resultado->fetch_assoc())
+                            {
+                                $_SESSION['ID'] = $row['ID'];
+                            }
                         }
+                        aviso("success", "Noraboa ".$_POST['inputNomeRexistro']."! Rexistr&aacute;cheste correctamente.", "index.php", "Voltar ao Inicio");
                     }
-                    aviso("success", "Noraboa ".$_POST['inputNomeRexistro']."! Rexistr&aacute;cheste correctamente.", "index.php", "Voltar ao Inicio");
+                    else
+                        aviso("danger", "Algo foi mal durante o rexistro.", "index.php", "Voltar ao Inicio");
                 }
                 else
-                    aviso("danger", "Algo foi mal durante o rexistro.", "index.php", "Voltar ao Inicio");
+                    aviso("danger", "O mail introducido xa est&aacute; en uso.", "index.php", "Voltar ao Inicio");  
             }
             else
-                aviso("danger", "O mail introducido xa est谩 en uso.", "index.php", "Voltar ao Inicio");        
+                aviso("danger", "O correo introducido non cumple os requisitos de validaci&oacute;n.", "index.php", "Voltar ao Inicio");                 
         }
     
         if ($accion=="login")
         {
-            $bd = new BD();
-            $resultado = $bd->login($_POST['inputLogin'], $_POST['inputContrasinal']);
-            
-            if($resultado->num_rows > 0)
+            if(validamail($_POST['inputLogin']))
             {
-                while($row = $resultado->fetch_assoc())
+                $bd = new BD();
+                $resultado = $bd->login($_POST['inputLogin'], $_POST['inputContrasinal']);
+                
+                if($resultado->num_rows > 0)
                 {
-                    $_SESSION['ID'] = $row['ID'];
+                    while($row = $resultado->fetch_assoc())
+                    {
+                        $_SESSION['ID'] = $row['ID'];
+                    }
+                    header("location:index.php");
                 }
-                header("location:index.php");
+                else
+                    aviso("danger", "Usuario ou contrasinal incorrecto.", "index.php", "Voltar ao Inicio");
             }
             else
-                aviso("danger", "Usuario ou contrasinal incorrecto.", "index.php", "Voltar ao Inicio");
-    
+                aviso("danger", "O correo introducido non cumple os requisitos de validaci&oacute;n.", "index.php", "Voltar ao Inicio");
+        
         }
     }
     else
-        aviso("danger", "Xa hai unha sesi贸n aberta no navegador.", "index.php", "Voltar ao Inicio");
+        aviso("danger", "Xa hai unha sesi&oacute;n aberta no navegador.", "index.php", "Voltar ao Inicio");
     
 ?>
 

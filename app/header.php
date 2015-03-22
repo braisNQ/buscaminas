@@ -1,7 +1,15 @@
 <?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
+<?php
     /*
      * iniciar sesion
      */
+    ob_start();
     session_start();
 ?>
 
@@ -16,7 +24,7 @@
 
 <?php
      
-    //incluindo todas as clases da aplicaciÃ³n
+    //incluindo todas as clases da aplicación
     include_once("funcions.php");
     include_once("clase_BD.php");
     include_once("clase_usuario.php");

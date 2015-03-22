@@ -1,3 +1,10 @@
+<?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
 <?php include("header.php"); ?>
 
 <?php menu("xogar");?>
@@ -18,6 +25,11 @@
     }
     else
     {
+
+        if(isset($_GET['msg']))
+            if($_GET['msg'] == "exito")
+                avisosimple("success", "Puntuaci&oacute;n enviada correctamente.");
+
         //valor de dimensión por defecto
         $dimension = 6;
 

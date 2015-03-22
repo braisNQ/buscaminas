@@ -1,4 +1,11 @@
 <?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
+<?php
     /*
     * Arquivo que contén as variables de conexión á BD
     * dirección, usuario, pass, nomeBD

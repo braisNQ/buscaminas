@@ -1,4 +1,11 @@
 <?php
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
+?>
+
+<?php
 	function aviso($color, $msg, $url, $btn)
 	{
 		echo '
@@ -51,8 +58,8 @@
 	function validamail($mail)
 	{
 		$toret = false;
-		$patronmail="#^(([a-z0-9\_\.\-]){2,27}\@([a-z]{3,8})\.([a-z]{2,3}))$#i";
-	  	if (preg_match($patronmail, $email))
+		$patronmail="#^(([a-z0-9\_\.\-]){2,30}\@([a-z]{3,15})\.([a-z]{2,3}))$#i";
+	  	if (preg_match($patronmail, $mail))
 	  	{
 	   		$toret = true;
 	  	}

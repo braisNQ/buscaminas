@@ -1,3 +1,7 @@
+/*
+ * Autor: Brais Carrión Ansias
+ * IAWEB 14/15
+ */
 
 //Variables Buscaminas
 var iniciado = false;
@@ -194,10 +198,11 @@ function finaliza()
 	div += '<div class="alert alert-success" role="alert">';
 	div += '<label class="control-label">Noraboa!</label>';
 	div += '<br /><br />';
-	div += '<button type="submit" class="btn btn-primary btn-sm">Enviar Puntuaci&oacute;n</button>';
+	div += '<button type="submit" name="rexistrascore" id="rexistrascore" class="btn btn-primary btn-sm">Enviar Puntuaci&oacute;n</button>';
 	div += '</div>';
 	div += '</div>';
 	document.getElementById("divaviso").innerHTML = div;
+
 }
 
 function desvelaMinas()
@@ -240,25 +245,19 @@ function getProximas(x,y)
 	if(x == 0) //fila superior
 	{
 		if(y == 0) //se columa esquerda
-		{
-			//alert("fila superior - columna esquerda");
-			
+		{			
 			if(tablaMinas[x][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][y]) toret++;
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 		}
 		if (y == dimension - 1) //se columna dereita
-		{
-			//alert("fila superior - columa dereita");
-			
+		{			
 			if(tablaMinas[x][y-1]) toret++;
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][y-1]) toret++;
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][y]) toret++;
 		}
 		if(y > 0 && y < dimension - 1) //centrais
-		{
-			//alert("fila superior - columna central");
-			
+		{			
 			if(tablaMinas[x][y-1]) toret++;
 			if(tablaMinas[x][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][y-1]) toret++;
@@ -270,25 +269,19 @@ function getProximas(x,y)
 	if(x == dimension - 1) //fila inferior
 	{
 		if(y == 0) //se columa esquerda
-		{
-			//alert("fila inferior - columna esquerda");
-			
+		{			
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x-1][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 			if(tablaMinas[x][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 		}
 		if (y == dimension - 1) //se columna dereita
-		{
-			//alert("fila inferior - columa dereita");
-			
+		{			
 			if(tablaMinas[x-1][y-1]) toret++;
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x][y-1]) toret++;
 		}
 		if(y > 0 && y < dimension - 1) //centrais
-		{
-			//alert("fila inferior - columna central");
-			
+		{			
 			if(tablaMinas[x-1][y-1]) toret++;
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x-1][parseInt(y, 10) + parseInt(1, 10)]) toret++;
@@ -300,9 +293,7 @@ function getProximas(x,y)
 	if(x>0 && x<dimension - 1) //resto
 	{
 		if(y == 0) //se columa esquerda
-		{
-			//alert("fila normal - columna esquerda");
-			
+		{			
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x-1][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 			if(tablaMinas[x][parseInt(y, 10) + parseInt(1, 10)]) toret++;
@@ -310,9 +301,7 @@ function getProximas(x,y)
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][parseInt(y, 10) + parseInt(1, 10)]) toret++;
 		}
 		if (y == dimension - 1) //se columna dereita
-		{
-			//alert("fila normal - columa dereita");
-			
+		{			
 			if(tablaMinas[x-1][y-1]) toret++;
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x][y-1]) toret++;
@@ -320,9 +309,7 @@ function getProximas(x,y)
 			if(tablaMinas[parseInt(x, 10) + parseInt(1, 10)][y]) toret++;
 		}
 		if(y > 0 && y < dimension - 1) //centrais
-		{
-			//alert("fila normal - columna central");
-			
+		{			
 			if(tablaMinas[x-1][y-1]) toret++;
 			if(tablaMinas[x-1][y]) toret++;
 			if(tablaMinas[x-1][parseInt(y, 10) + parseInt(1, 10)]) toret++;
