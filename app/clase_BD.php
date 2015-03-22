@@ -152,7 +152,7 @@ class BD
      
     $sql='';
     $sql = $sql."select dimension, tempo, data, nome, mail from usuario, partida ";
-    $sql = $sql." where usuario.ID = Partida.id_usuario and usuario.nome like '%".$n."%' and usuario.mail like '%".$m."%' ";
+    $sql = $sql." where usuario.ID = partida.id_usuario and usuario.nome like '%".$n."%' and usuario.mail like '%".$m."%' ";
     if($dimension != 0)
       $sql = $sql." and partida.dimension ='".$dimension."' ";                        
     $sql = $sql." order by tempo asc, data asc";        
@@ -172,7 +172,7 @@ class BD
       
     $sql='';
     $sql = $sql."select dimension, tempo, data, nome, mail from usuario, partida ";
-    $sql = $sql." where usuario.ID = Partida.id_usuario and usuario.nome like '%".$n."%' and usuario.mail like '%".$m."%' ";
+    $sql = $sql." where usuario.ID = partida.id_usuario and usuario.nome like '%".$n."%' and usuario.mail like '%".$m."%' ";
     if($dimension != 0)
       $sql = $sql." and partida.dimension ='".$dimension."' ";
               
